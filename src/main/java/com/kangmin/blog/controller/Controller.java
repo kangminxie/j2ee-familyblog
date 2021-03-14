@@ -108,42 +108,38 @@ public class Controller extends HttpServlet {
         }
 
         if (action.equals("adminHome.do")) {
-            System.out.println("will perform admin Home.do, request");
             return Action.perform("adminHome.do", request);
         }
 
         if (action.equals("resetPassword.do")) {
-            System.out.println("will perform admin Home.do, request");
             return Action.perform("adminHome.do", request);
         }
 
         if (action.equals("register.do")) {
-            System.out.println("will perform register.do, request");
             return Action.perform("register.do", request);
         }
 
         if (action.contains("visitor.do")) {
-            System.out.println("will perform visitor.do, request");
             return Action.perform("visitor.do", request);
         }
 
         if (action.equals("home.do") || action.equals("addPost.do")
             || action.equals("deletePost.do") || action.equals("logout.do")) {
-            System.out.println("not log-in, can not go to home or add/deletePost, or even logout");
+            LOG.debug("not log-in, can not go to home or add/deletePost, or even logout");
             return Action.perform("login.do", request);
         }
 
         if (action.equals("addComment.do")) {
             String s = "addComment.do";
             request.setAttribute("checkPath", s);
-            System.out.println("not loggin, can not add Comment");
+            LOG.debug("not logged-in user, can not add Comment");
             return Action.perform("login.do", request);
         }
 
         if (action.equals("deleteComment.do")) {
             String s = "deleteComment.do";
             request.setAttribute("checkPath", s);
-            System.out.println("not loggin, can not delete Comment");
+            LOG.debug("not logged-in user, can not delete Comment");
             return Action.perform("login.do", request);
         }
 
@@ -175,7 +171,7 @@ public class Controller extends HttpServlet {
         if (nextPage.contains(".jsp")) {
             final RequestDispatcher d = request.getRequestDispatcher("WEB-INF/" + nextPage);
             d.forward(request, response);
-            System.out.println("d.forward to:" + "WEB-INF/" + nextPage);
+            System.out.println("[>>> checking next page] d.forward to:" + "WEB-INF/" + nextPage);
             return;
         }
 

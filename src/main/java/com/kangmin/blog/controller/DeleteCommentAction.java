@@ -54,8 +54,6 @@ public class DeleteCommentAction extends Action {
             final Comment[] allComments = commentDAO.getAllComments();
 
             // here comments should exist so allComments.length > 1
-            System.out.println("all Comments count:" + allComments.length);
-
             if (errors.size() != 0) {
                 if (form.getSource() != null && form.getSource().equals("home")) {
                     // if we are delete from home.jsp, back home.jsp
@@ -88,12 +86,10 @@ public class DeleteCommentAction extends Action {
             // it looks no error in the form
             final String homeUserEmail = ((User) request.getSession().getAttribute("user")).getUserName();
             if (form.getSource().equals("home")) {
-                System.out.println("Delete comment from home...");
                 // at home, can delete everything comment under self's post at home
                 // in other words, the comment to be deleted has a toId that belongs to home
                 final Comment c = commentDAO.getUserComment(form.getIdAsInt());
                 if (c == null) {
-                    System.out.println("c is null, cid is: null");
                     request.setAttribute(REQ_ATTR_ERROR, "You can NOT delete a comment that NOT exist, hacked");
                     return "blogMasterError.jsp";
                 }

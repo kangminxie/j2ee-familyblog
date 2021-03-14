@@ -19,11 +19,11 @@
         </init-param>
         <init-param>
             <param-name>jdbcUser</param-name>
-            <param-value> </param-value>
+            <param-value>root</param-value>
         </init-param>
         <init-param>
             <param-name>jdbcPassword</param-name>
-            <param-value> </param-value>
+            <param-value>5523</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

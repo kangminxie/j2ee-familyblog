@@ -8,7 +8,12 @@ import java.util.List;
 
 import com.kangmin.blog.databean.Admin;
 import com.kangmin.blog.formbean.SHA;
-import org.genericdao.*;
+import org.genericdao.ConnectionPool;
+import org.genericdao.DAOException;
+import org.genericdao.GenericDAO;
+import org.genericdao.MatchArg;
+import org.genericdao.RollbackException;
+import org.genericdao.Transaction;
 
 public class AdminDAO extends GenericDAO<Admin> {
 

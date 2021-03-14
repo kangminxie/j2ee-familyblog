@@ -30,18 +30,14 @@ You can read more about GenericDAO here: http://www.genericdao.org/GenericDAO/re
 ```sql
 CREATE DATABASE testc CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 ```
-Tables will be created automatically with GenericDao
-
-### Admin and regular User group
-* separated from each other
-* default admin user: `admin`/`admin` as username and password
+Tables will be created automatically with GenericDao in the first deployment
 
 ### Instructions to run with Maven Jetty
 * assume you already have Maven downloaded and configured correctly
 ```bash
 $ cd [project_root]
 $ mvn jetty:run
-visit: http://localhost:8080/
+visit: http://localhost:8080/ and register a new user to try
 ```
 
 ### Instructions to run with Tomcat Server
@@ -50,9 +46,14 @@ Step-0: Download Tomcat v8.5 (eg. 8.5.23) or higher
 Step-1: Hit Edit Configurations in IntelliJ
 Step-2: Setup the Application Server
 Step-3: Click the `Tomcat 8.5.23` in Run/Dug Configuration bar to run
-visit: http://localhost:8080/familyblog 
+visit: http://localhost:8080/familyblog
   or the URL configure such as `http://localhost:8080/j2ee-familyblog:war_explored` (check your tomcat run config)
 ```
+
+### Admin and regular User group
+* separated from each other
+* default admin user: `admin`/`admin` as username and password at `http://localhost:8080/adminLogin.do`
+* you can register a new user at `http://localhost:8080/register.do`
 
 ### Style-check
 in project root directory

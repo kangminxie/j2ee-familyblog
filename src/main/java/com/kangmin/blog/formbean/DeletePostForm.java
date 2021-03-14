@@ -27,7 +27,7 @@ public class DeletePostForm {
         try {
             return Integer.parseInt(id);
         } catch (final NumberFormatException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             return -1;
         }
     }

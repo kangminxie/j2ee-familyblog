@@ -38,8 +38,8 @@ public class DeleteCommentForm {
     public int getIdAsInt() {
         try {
             return Integer.parseInt(id);
-        } catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
+        } catch (final NumberFormatException e) {
+            e.printStackTrace();
             return -1;
         }
     }
@@ -47,8 +47,8 @@ public class DeleteCommentForm {
     public int getToIdAsInt() {
         try {
             return Integer.parseInt(toId);
-        } catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
+        } catch (final NumberFormatException e) {
+            e.printStackTrace();
             return -1;
         }
     }
@@ -109,7 +109,6 @@ public class DeleteCommentForm {
 
         if (source == null) {
             errors.add("The comment source is MISSING");
-            System.out.println("source is MISSING");
         } else if (source.trim().equals("")) {
             errors.add("The comment source is empty, not home or visitor!");
         } else if (!source.trim().equals("home") && !source.trim().equals("visitor")) {
@@ -121,6 +120,7 @@ public class DeleteCommentForm {
             return errors;
         }
 
+        assert action != null;
         if (!action.trim().equals("X")) {
             errors.add("Invalid action: " + action);
         }

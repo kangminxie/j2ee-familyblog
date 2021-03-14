@@ -15,12 +15,14 @@ import com.kangmin.blog.model.CommentDAO;
 import com.kangmin.blog.model.Model;
 import com.kangmin.blog.model.PostDAO;
 import com.kangmin.blog.model.UserDAO;
+import org.apache.log4j.Logger;
 import org.genericdao.RollbackException;
 
 import static com.kangmin.blog.util.CommentsUtil.getFilteredComments;
 import static com.kangmin.blog.util.Constants.REQ_ATTR_ERROR;
 
 public class AddPostAction extends Action {
+    private static final Logger LOG = Logger.getLogger(AddPostAction.class);
 
     private final UserDAO userDAO;
     private final PostDAO postDAO;
@@ -40,7 +42,7 @@ public class AddPostAction extends Action {
         final HttpSession session = request.getSession(true);
         final User sessionUser = (User) session.getAttribute("user");
         if (sessionUser == null) {
-            System.out.println("actually not logged in, can not perform AddCommentAction");
+            LOG.debug("actually not logged in, can not perform AddCommentAction");
             return "login.do";
         }
 

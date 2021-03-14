@@ -15,12 +15,14 @@ import com.kangmin.blog.model.CommentDAO;
 import com.kangmin.blog.model.Model;
 import com.kangmin.blog.model.PostDAO;
 import com.kangmin.blog.model.UserDAO;
+import org.apache.log4j.Logger;
 import org.genericdao.RollbackException;
 
 import static com.kangmin.blog.util.CommentsUtil.getFilteredComments;
 import static com.kangmin.blog.util.Constants.REQ_ATTR_ERROR;
 
 public class AddCommentAction extends Action {
+    private static final Logger LOG = Logger.getLogger(AddCommentAction.class);
 
     private final UserDAO userDAO;
     private final PostDAO postDAO;
@@ -45,7 +47,7 @@ public class AddCommentAction extends Action {
         final User sessionUser = (User) session.getAttribute("user");
         if (sessionUser == null) {
             // in case of null-pointer error, since only login user can come
-            System.out.println("actually not logged in, can not perform AddCommentAction");
+            LOG.debug("actually not logged in, can not perform AddCommentAction");
             return "login.do";
         }
         try {
@@ -77,7 +79,6 @@ public class AddCommentAction extends Action {
             // even addCommentForm has no error, need to see if the itTo Post exist or not
             final Post p = postDAO.read(form.getToIdAsInt());
             if (p == null) {
-                System.out.println("Someone changed the postId to non-exist one...");
                 request.setAttribute(REQ_ATTR_ERROR, "You can not add comment to a post does not exist!\n"
                     + "Either the post has been deleted already, or "
                     + "someone must have changed the postId to non-exist one in hidden field, hacked");

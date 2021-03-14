@@ -66,7 +66,6 @@ public class LoginAction extends Action {
             e1.printStackTrace();
         }
 
-        // System.out.println("LoginAction POST here start");
         // If user is already logged in, redirect to home.do
         final HttpSession session = request.getSession();
         if (session.getAttribute(SESSION_ATTR_USER) != null) {
@@ -81,11 +80,11 @@ public class LoginAction extends Action {
 
         final String thePath = (String) request.getAttribute("checkPath");
         if (thePath != null && thePath.equals("addComment.do")) {
-            System.out.println("From addComment, remind go to login.jsp");
+            LOG.debug("From addComment, remind go to login.jsp");
             return "login.jsp";
         }
 
-        System.out.println("LoginAction POST user is null, go ahead");
+        LOG.debug("LoginAction POST user is null, go ahead");
         // the current session has no user, will be here for login
 
         final LoginForm form = new LoginForm(request);

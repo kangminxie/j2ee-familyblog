@@ -32,8 +32,8 @@ public class AddCommentForm {
     public int getToIdAsInt() {
         try {
             return Integer.parseInt(toId);
-        } catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
+        } catch (final NumberFormatException e) {
+            e.printStackTrace();
             return -1;
         }
     }

@@ -44,7 +44,7 @@ public class RegisterAction extends Action {
         try {
             request.setAttribute("users", userDAO.getUsers());
         } catch (final RollbackException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return "register.jsp";
     }
@@ -60,7 +60,8 @@ public class RegisterAction extends Action {
         try {
             request.setAttribute("users", userDAO.getUsers());
         } catch (final RollbackException e) {
-            System.out.println(e.getMessage());
+           e.printStackTrace();
+            return "home.do";
         }
 
         // the current session has no user, will be here for login
