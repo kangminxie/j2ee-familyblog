@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    padding-right: 20px;
+}
+
+.jumbotron {
+    color: #2c3e50;
+}
